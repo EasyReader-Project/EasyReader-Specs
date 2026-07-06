@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://easyreader.project/schemas/note.schema.json",
+  "title": "笔记/批注数据",
+  "description": "用户的文字批注，可依附书签或独立存在",
+  "type": "object",
+  "required": [
+    "content",
+    "created_at"
+  ],
+  "properties": {
+    "bookmark_id": {
+      "type": "integer",
+      "description": "关联的书签 ID（若依附于书签）"
+    },
+    "location": {
+      "type": "object",
+      "description": "独立定位（仅当 bookmark_id 为空时需要），结构与 progress 一致",
+      "properties": {
+        "epub": {
+          "type": "object",
+          "properties": {
+            "cfi": {
+              "type": "string",
+              "pattern": "^epubcfi\\(.*\\)$"
+            }
+          },
+          "required": [
+            "cfi"
+          ],
+          "additionalProperties": false
+        },
+        "pdf": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "page"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 1,
+      "maxProperties": 1
+    },
+    "content": {
+      "type": "string",
+      "description": "笔记正文（纯文本或 Markdown）"
+    },
+    "chapter_title": {
+      "type": "string",
+      "description": "冗余字段：当前所在章节标题，便于列表展示"
+    },
+    "created_at": {
+      "type": "integer",
+      "description": "创建时间戳（毫秒）"
+    },
+    "updated_at": {
+      "type": "integer",
+      "description": "更新时间戳（毫秒）"
+    }
+  },
+  "additionalProperties": false
+}

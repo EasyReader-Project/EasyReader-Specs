@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "手势动作枚举",
+  "description": "阅读器中所有可映射的手势动作，用于配置面板和事件分发",
+  "type": "object",
+  "properties": {
+    "PAGE_NAVIGATION": {
+      "type": "object",
+      "description": "翻页相关",
+      "properties": {
+        "NEXT_PAGE": {
+          "type": "string",
+          "const": "go_to_next_page"
+        },
+        "PREV_PAGE": {
+          "type": "string",
+          "const": "go_to_prev_page"
+        },
+        "SCROLL_UP": {
+          "type": "string",
+          "const": "scroll_up"
+        },
+        "SCROLL_DOWN": {
+          "type": "string",
+          "const": "scroll_down"
+        }
+      }
+    },
+    "VIEW_CONTROL": {
+      "type": "object",
+      "description": "视图/菜单控制",
+      "properties": {
+        "TOGGLE_TOC": {
+          "type": "string",
+          "const": "toggle_table_of_contents"
+        },
+        "TOGGLE_BOOKMARKS": {
+          "type": "string",
+          "const": "toggle_bookmarks_list"
+        },
+        "TOGGLE_MENU": {
+          "type": "string",
+          "const": "toggle_reading_menu"
+        },
+        "TOGGLE_FULLSCREEN": {
+          "type": "string",
+          "const": "toggle_fullscreen"
+        },
+        "BACK": {
+          "type": "string",
+          "const": "navigate_back"
+        }
+      }
+    },
+    "APPEARANCE": {
+      "type": "object",
+      "description": "外观/样式调整",
+      "properties": {
+        "TOGGLE_THEME": {
+          "type": "string",
+          "const": "toggle_day_night_theme"
+        },
+        "INCREASE_FONT": {
+          "type": "string",
+          "const": "increase_font_size"
+        },
+        "DECREASE_FONT": {
+          "type": "string",
+          "const": "decrease_font_size"
+        },
+        "TOGGLE_READING_MODE": {
+          "type": "string",
+          "const": "toggle_reading_mode"
+        }
+      }
+    },
+    "ACTION": {
+      "type": "object",
+      "description": "功能性动作",
+      "properties": {
+        "CREATE_BOOKMARK": {
+          "type": "string",
+          "const": "add_bookmark_at_current"
+        },
+        "SEARCH": {
+          "type": "string",
+          "const": "open_search_dialog"
+        },
+        "NONE": {
+          "type": "string",
+          "const": "no_action"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ActionValue": {
+      "type": "string",
+      "enum": [
+        "go_to_next_page",
+        "go_to_prev_page",
+        "scroll_up",
+        "scroll_down",
+        "toggle_table_of_contents",
+        "toggle_bookmarks_list",
+        "toggle_reading_menu",
+        "toggle_fullscreen",
+        "navigate_back",
+        "toggle_day_night_theme",
+        "increase_font_size",
+        "decrease_font_size",
+        "toggle_reading_mode",
+        "add_bookmark_at_current",
+        "open_search_dialog",
+        "no_action"
+      ]
+    }
+  }
+}

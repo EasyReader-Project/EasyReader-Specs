@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "统一错误码",
+  "description": "跨端共享的错误码分段，便于日志追踪和用户反馈",
+  "type": "object",
+  "properties": {
+    "FILE_IO": {
+      "type": "object",
+      "description": "1000-1999：文件读取与存储",
+      "properties": {
+        "FILE_NOT_FOUND": {
+          "type": "integer",
+          "const": 1001
+        },
+        "FILE_READ_PERMISSION": {
+          "type": "integer",
+          "const": 1002
+        },
+        "FILE_WRITE_PERMISSION": {
+          "type": "integer",
+          "const": 1003
+        },
+        "FILE_CORRUPTED": {
+          "type": "integer",
+          "const": 1004
+        },
+        "UNSUPPORTED_FORMAT": {
+          "type": "integer",
+          "const": 1005
+        }
+      }
+    },
+    "PARSER": {
+      "type": "object",
+      "description": "2000-2999：书籍解析器错误",
+      "properties": {
+        "EPUB_EXTRACT_FAILED": {
+          "type": "integer",
+          "const": 2001
+        },
+        "EPUB_METADATA_MISSING": {
+          "type": "integer",
+          "const": 2002
+        },
+        "EPUB_CFI_INVALID": {
+          "type": "integer",
+          "const": 2003
+        },
+        "PDF_PAGE_OUT_OF_RANGE": {
+          "type": "integer",
+          "const": 2004
+        },
+        "PDF_PASSWORD_PROTECTED": {
+          "type": "integer",
+          "const": 2005
+        }
+      }
+    },
+    "DATABASE": {
+      "type": "object",
+      "description": "3000-3999：数据库操作错误",
+      "properties": {
+        "DB_OPEN_FAILED": {
+          "type": "integer",
+          "const": 3001
+        },
+        "DB_QUERY_SYNTAX": {
+          "type": "integer",
+          "const": 3002
+        },
+        "DB_CONSTRAINT_VIOLATION": {
+          "type": "integer",
+          "const": 3003
+        },
+        "DB_BUSY_LOCKED": {
+          "type": "integer",
+          "const": 3004
+        }
+      }
+    },
+    "SYNC": {
+      "type": "object",
+      "description": "5000-5999：同步与网络（预留，供后续 protocols 使用）",
+      "properties": {
+        "WEBDAV_CONNECTION_FAILED": {
+          "type": "integer",
+          "const": 5001
+        },
+        "WEBDAV_AUTH_FAILED": {
+          "type": "integer",
+          "const": 5002
+        },
+        "BACKUP_PARSE_FAILED": {
+          "type": "integer",
+          "const": 5003
+        }
+      }
+    }
+  }
+}

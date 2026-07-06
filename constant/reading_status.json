@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "阅读状态枚举",
+  "description": "书籍当前阅读进度状态，与 SQL CHECK 约束保持一致",
+  "type": "object",
+  "properties": {
+    "UNREAD": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "const": "unread"
+        },
+        "label": {
+          "type": "string",
+          "const": "未读"
+        },
+        "icon_hint": {
+          "type": "string",
+          "const": "circle"
+        }
+      }
+    },
+    "READING": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "const": "reading"
+        },
+        "label": {
+          "type": "string",
+          "const": "在读"
+        },
+        "icon_hint": {
+          "type": "string",
+          "const": "half-circle"
+        }
+      }
+    },
+    "FINISHED": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "const": "finished"
+        },
+        "label": {
+          "type": "string",
+          "const": "读完"
+        },
+        "icon_hint": {
+          "type": "string",
+          "const": "check-circle"
+        }
+      }
+    }
+  }
+}

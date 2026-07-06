@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://easyreader.project/schemas/book.schema.json",
+  "title": "书籍元数据",
+  "description": "书籍的完整元数据，用于跨设备同步和备份",
+  "type": "object",
+  "required": [
+    "file_hash",
+    "title",
+    "format",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "file_hash": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{64}$",
+      "description": "文件 SHA-256 哈希值（十六进制）"
+    },
+    "title": {
+      "type": "string",
+      "description": "书名"
+    },
+    "author": {
+      "type": "string",
+      "description": "作者"
+    },
+    "publisher": {
+      "type": "string",
+      "description": "出版社"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "epub",
+        "pdf"
+      ],
+      "description": "书籍格式"
+    },
+    "word_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "总字数"
+    },
+    "page_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "总页数"
+    },
+    "file_size": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "文件大小（字节）"
+    },
+    "last_modified": {
+      "type": "integer",
+      "description": "文件修改时间戳（毫秒）"
+    },
+    "cover_path": {
+      "type": "string",
+      "description": "封面图片路径（仅本端有效，跨端同步时不传输实际图片文件）"
+    },
+    "reading_status": {
+      "type": "string",
+      "enum": [
+        "unread",
+        "reading",
+        "finished"
+      ],
+      "description": "阅读状态"
+    },
+    "created_at": {
+      "type": "integer",
+      "description": "记录创建时间戳（毫秒）"
+    },
+    "updated_at": {
+      "type": "integer",
+      "description": "记录更新时间戳（毫秒）"
+    }
+  },
+  "additionalProperties": false
+}

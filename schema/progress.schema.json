@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://easyreader.project/schemas/progress.schema.json",
+  "title": "阅读进度数据",
+  "description": "记录用户在书籍中的精确阅读位置，支持 EPUB 和 PDF 两种格式",
+  "type": "object",
+  "required": [
+    "format",
+    "location",
+    "percent",
+    "updated_at"
+  ],
+  "properties": {
+    "format": {
+      "type": "string",
+      "enum": [
+        "epub",
+        "pdf"
+      ],
+      "description": "书籍格式，决定 location 对象中使用哪个子字段"
+    },
+    "location": {
+      "type": "object",
+      "description": "精确定位数据，根据 format 使用对应的子字段",
+      "properties": {
+        "epub": {
+          "type": "object",
+          "description": "EPUB 格式的定位信息",
+          "required": [
+            "cfi"
+          ],
+          "properties": {
+            "cfi": {
+              "type": "string",
+              "description": "EPUB CFI (Canonical Fragment Identifier) 标准定位字符串",
+              "pattern": "^epubcfi\\(.*\\)$"
+            }
+          },
+          "additionalProperties": false
+        },
+        "pdf": {
+          "type": "object",
+          "description": "PDF 格式的定位信息",
+          "required": [
+            "page"
+          ],
+          "properties": {
+            "page": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "当前所在的页码（从 1 开始）"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 1,
+      "maxProperties": 1
+    },
+    "chapter": {
+      "type": "object",
+      "description": "辅助定位信息：当前章节的上下文",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "章节文件的路径或锚点"
+        },
+        "title": {
+          "type": "string",
+          "description": "章节标题"
+        },
+        "index": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "章节在目录中的序号（从 0 开始）"
+        }
+      },
+      "additionalProperties": false
+    },
+    "percent": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "全局阅读百分比（0~1），用于进度条展示和跨格式降级定位"
+    },
+    "updated_at": {
+      "type": "integer",
+      "description": "该条进度记录的最后更新时间戳（毫秒），应与 progress.last_read_at 保持一致"
+    }
+  },
+  "additionalProperties": false
+}
