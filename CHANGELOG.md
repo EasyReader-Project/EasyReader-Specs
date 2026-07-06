@@ -42,9 +42,10 @@
 ### Added
 - 初始化仓库目录结构
 - 建立 `sql/schema.sql` 基础表结构
-- 建立 `schemas/` 下各 JSON Schema 骨架
-- 建立 `constants/` 下常量枚举骨架
-- 建立 `protocols/` 下同步规则文档骨架
+- 建立 `schema/` 下各 JSON Schema 骨架
+- 建立 `constant/` 下常量枚举骨架
+- 建立 `protocol/` 下同步规则文档骨架
+- 建立 `test/` 下测试规则骨架
 
 ---
 
