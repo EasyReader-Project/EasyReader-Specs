@@ -2,16 +2,16 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://easyreader.project/schemas/progress.schema.json",
   "title": "阅读进度数据",
-  "description": "记录用户在书籍中的精确阅读位置，支持 EPUB 和 PDF 两种格式",
+  "description": "记录用户在书籍中的精确阅读位置",
   "type": "object",
   "required": [
-    "format",
+    "file_type",
     "location",
     "percent",
     "updated_at"
   ],
   "properties": {
-    "format": {
+    "file_type": {
       "type": "string",
       "enum": [
         "epub",
@@ -21,7 +21,7 @@
     },
     "location": {
       "type": "object",
-      "description": "精确定位数据，根据 format 使用对应的子字段",
+      "description": "精确定位数据，根据 file_type 使用对应的子字段",
       "properties": {
         "epub": {
           "type": "object",

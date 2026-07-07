@@ -7,7 +7,7 @@
   "required": [
     "file_hash",
     "title",
-    "format",
+    "file_type",
     "created_at",
     "updated_at"
   ],
@@ -29,7 +29,7 @@
       "type": "string",
       "description": "出版社"
     },
-    "format": {
+    "file_type": {
       "type": "string",
       "enum": [
         "epub",
