@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://easyreader.project/schemas/shelf_export.schema.json",
+  "title": "书架完整导出数据",
+  "description": "用于 WebDAV 同步或本地备份的完整书架结构",
+  "type": "object",
+  "required": ["shelf", "folders", "items"],
+  "properties": {
+    "shelf": {
+      "type": "object",
+      "description": "书架元数据",
+      "required": ["uuid", "name", "created_at", "updated_at"],
+      "properties": {
+        "uuid": { "type": "string" },
+        "name": { "type": "string" },
+        "cover_path": { "type": "string" },
+        "sort_order": { "type": "integer" },
+        "is_default": { "type": "boolean" },
+        "created_at": { "type": "integer" },
+        "updated_at": { "type": "integer" }
+      },
+      "additionalProperties": false
+    },
+    "folders": {
+      "type": "array",
+      "description": "该书架下的所有文件夹（扁平化存储，通过 parent_uuid 关联）",
+      "items": {
+        "type": "object",
+        "required": ["uuid", "name", "created_at", "updated_at"],
+        "properties": {
+          "uuid": { "type": "string" },
+          "parent_uuid": { "type": ["string", "null"] },
+          "name": { "type": "string" },
+          "sort_order": { "type": "integer" },
+          "icon": { "type": "string" },
+          "created_at": { "type": "integer" },
+          "updated_at": { "type": "integer" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "items": {
+      "type": "array",
+      "description": "书架内的书籍映射条目",
+      "items": {
+        "type": "object",
+        "required": ["book_hash", "added_at", "updated_at"],
+        "properties": {
+          "book_hash": { "type": "string", "description": "关联 book 的 file_hash" },
+          "folder_uuid": { "type": ["string", "null"] },
+          "sort_order": { "type": "integer" },
+          "is_archived": { "type": "boolean" },
+          "notes": { "type": "string" },
+          "added_at": { "type": "integer" },
+          "updated_at": { "type": "integer" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
