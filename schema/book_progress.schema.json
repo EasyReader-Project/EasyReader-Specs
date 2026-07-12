@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://easyreader.project/schemas/progress.schema.json",
+  "$id": "https://easyreader.project/schemas/book_progress.schema.json",
   "title": "阅读进度数据",
   "description": "记录用户在书籍中的精确阅读位置",
   "type": "object",

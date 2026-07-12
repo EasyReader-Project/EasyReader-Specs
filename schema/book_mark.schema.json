@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://easyreader.project/schemas/bookmark.schema.json",
+  "$id": "https://easyreader.project/schemas/book_mark.schema.json",
   "title": "书签/高亮数据",
   "description": "用户标记的阅读位置，包含定位、高亮文本和样式",
   "type": "object",
