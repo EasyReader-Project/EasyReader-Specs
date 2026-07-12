@@ -17,6 +17,6 @@ CREATE TABLE IF NOT EXISTS shelf_folder (
     FOREIGN KEY (parent_shelf_folder_id) REFERENCES shelf_folder(id) ON DELETE CASCADE
 );
 
-CREATE INDEX idx_shelf_folder_shelf_id ON shelf_folder(shelf_id);
-CREATE INDEX idx_shelf_folder_parent ON shelf_folder(parent_shelf_folder_id);
-CREATE INDEX idx_shelf_folder_uuid ON shelf_folder(uuid);
+CREATE INDEX IF NOT EXISTS idx_shelf_folder_shelf_id ON shelf_folder(shelf_id);
+CREATE INDEX IF NOT EXISTS idx_shelf_folder_parent ON shelf_folder(parent_shelf_folder_id);
+CREATE INDEX IF NOT EXISTS idx_shelf_folder_uuid ON shelf_folder(uuid);

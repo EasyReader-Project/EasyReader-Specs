@@ -13,5 +13,5 @@ CREATE TABLE IF NOT EXISTS book_progress (
     FOREIGN KEY (book_id) REFERENCES book(id) ON DELETE CASCADE
 );
 
-CREATE INDEX idx_book_progress_book_id ON book_progress(book_id);
-CREATE INDEX idx_book_progress_last_read ON book_progress(last_read_at);
+CREATE INDEX IF NOT EXISTS idx_book_progress_book_id ON book_progress(book_id);
+CREATE INDEX IF NOT EXISTS idx_book_progress_last_read ON book_progress(last_read_at);

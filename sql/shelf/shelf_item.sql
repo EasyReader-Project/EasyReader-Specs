@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS shelf_item (
     UNIQUE(shelf_id, book_id)                 -- 同一书架的同一本书只能出现一次
 );
 
-CREATE INDEX idx_shelf_item_shelf ON shelf_item(shelf_id);
-CREATE INDEX idx_shelf_item_book ON shelf_item(book_id);
-CREATE INDEX idx_shelf_item_folder ON shelf_item(shelf_folder_id);
-CREATE INDEX idx_shelf_item_archived ON shelf_item(is_archived);
+CREATE INDEX IF NOT EXISTS idx_shelf_item_shelf ON shelf_item(shelf_id);
+CREATE INDEX IF NOT EXISTS idx_shelf_item_book ON shelf_item(book_id);
+CREATE INDEX IF NOT EXISTS idx_shelf_item_folder ON shelf_item(shelf_folder_id);
+CREATE INDEX IF NOT EXISTS idx_shelf_item_archived ON shelf_item(is_archived);

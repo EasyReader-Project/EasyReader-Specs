@@ -15,5 +15,5 @@ CREATE TABLE IF NOT EXISTS book_mark (
     FOREIGN KEY (book_id) REFERENCES book(id) ON DELETE CASCADE
 );
 
-CREATE INDEX idx_book_mark_book_id ON book_mark(book_id);
-CREATE INDEX idx_book_mark_created_at ON book_mark(created_at);
+CREATE INDEX IF NOT EXISTS idx_book_mark_book_id ON book_mark(book_id);
+CREATE INDEX IF NOT EXISTS idx_book_mark_created_at ON book_mark(created_at);
